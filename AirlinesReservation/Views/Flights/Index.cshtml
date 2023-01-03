@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AirlinesReservation.Models.Flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+@Html.Raw(TempData["mes"])
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/Flights/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">Manage Emloyee</a></li>
+        </ol>
+    </div>
+    <div class="card-header d-flex justify-content-between">
+        <div> <h4 class="card-title">Manage Emloyee</h4></div>
+        <button type="button" class="btn btn-rounded btn-success pull-right" data-bs-toggle="modal" data-bs-target=".flightmodal">
+            <span class="btn-icon-start text-info">
+                <i class="fa fa-plus color-info"></i>
+            </span>Add
+        </button>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>Flight id</th>
+                                <th>Origin city</th>
+                                <th>Destinationcity</th>
+                                <th>Miles</th>
+                                <th>Departure date</th>
+                                <th>Seats</th>
+                                <th>First</th>
+                                <th>Business</th>
+                                <th>Deluxe Economy</th>   
+                                <th>Economy</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var f in ViewBag.Flight)
+                            {
+                                <tr>
+                                    <td>@f.Flight_id</td>
+                                    <td>@Html.Action("namecity", new { id = f.Origin_city })</td>
+                                    <td>@Html.Action("namecity", new { id = f.Destination_city })</td>
+                                    <td>@f.Miles</td>
+                                    <td>@f.Departure_date</td>
+                                    <td>280</td>
+                                    <td>@Html.Action("checkprice" , new {id=f.Flight_id , number = 1 })</td>
+                                    <td>@Html.Action("checkprice", new { id = f.Flight_id, number = 5 })</td>
+                                    <td>@Html.Action("checkprice", new { id = f.Flight_id, number = 12})</td>
+                                    <td>@Html.Action("checkprice", new { id = f.Flight_id, number = 28 })</td>
+                                    <td>
+                                        @Html.ActionLink("Details", "Details", new { id = f.Flight_id }, new { @class = "btn btn-primary shadow btn-xs sharp me-1 fas  fa-info-circle" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

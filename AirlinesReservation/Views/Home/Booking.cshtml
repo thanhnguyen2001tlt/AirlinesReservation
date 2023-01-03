@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Booking", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2>Booking</h2>
+    @{
+        int number = 0;
+        string clas = "";
+
+        switch (@ViewBag.Classsed)
+        {
+            case "Firstclass":
+                number = 1;
+                clas = "First Class";
+              break;
+            case "Businessclass":
+                number = 5;
+                clas = "Business Class";
+                break;
+            case "DeluxeEconomyClass":
+                number = 12;
+                clas = "Deluxe Economy Class";
+                break;
+            case "Economyclass":
+                number = 28;
+                clas = "Economy Class";   
+                break;
+        }
+        string price = Html.Action("checkprice", new { id = ViewBag.flightid, number = number }).ToString();
+        double pr = Convert.ToDouble(price);
+        int persion = Convert.ToInt32(Session["adults"]);
+        double total = pr * persion;
+    }
+    <hr />
+    <div class="form-group">
+        <span class="control-label col-md-2">Class</span>
+        <div class="col-md-10">
+            <input type="text" value="@clas" name="classed" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="form-group">
+        <span class="control-label col-md-2"> Empty chart</span>
+        <div class="col-md-10">
+            <input type="text" value="@Html.Action("countemse", new { id = ViewBag.flightid, classsed = clas })" name="empty" class="form-control" readonly />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Price</label>
+        <div class="col-md-10">
+            <input type="text" value="@price" name="Price" class="form-control" readonly />
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Adults</label>
+        <div class="col-md-10">
+            <input type="number" value="@Session["adults"]" name="adults" class="form-control" readonly />
+        </div>
+    </div>
+    <input type="text" value="@ViewBag.flightid" name="flightid" class="form-control" style="display:none;" />
+    <input type="text" value="@Session["id"]" name="iduser" class="form-control" style="display:none;" />
+    <div class="form-group">
+        <span class="control-label col-md-2">type</span>
+        <div class="col-md-10">
+            <select class="form-control" name="typebooking">
+                <option value="1">Buy</option>
+                <option value="2">Block</option>
+            </select>
+            <span class="select-arrow"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Total</label>
+        <div class="col-md-10">
+            <input type="number" value="@total" name="total" class="form-control" readonly />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Booking" class="btn btn-success btn-lg btn-block" />
+        </div>
+    </div>
+</div>
+}
+

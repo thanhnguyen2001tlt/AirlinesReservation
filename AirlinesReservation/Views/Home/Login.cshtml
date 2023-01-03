@@ -1,0 +1,42 @@
+﻿@model  AirlinesReservation.Models.DB_user
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <h4 class="text-center mb-4">
+                        <img class="logo-abbr" src="~/assets/img/logo/logoimg.png" width="150" height="150" viewbox="0 0 53 53" ; />
+                        <img class="brand-title" src="~/assets/img/logo/lgtext.png" width="300" height="40" />
+                    </h4>
+                    @using (Html.BeginForm(Html.BeginForm("Login", "Home", FormMethod.Post)))
+                    {
+                        @Html.AntiForgeryToken();
+                <div class="mb-3">
+
+                    @Html.LabelFor(model => model.User_id, htmlAttributes: new { @class = "mb-1" })
+                    @Html.TextBoxFor(model => model.User_id, new { @class = "form-control" })
+                    @TempData["msge"]
+                </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "mb-1" })
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="submit" value="Login" class="btn btn-primary btn-block" />
+                        </div>
+                    }
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </section>
+</main>
+

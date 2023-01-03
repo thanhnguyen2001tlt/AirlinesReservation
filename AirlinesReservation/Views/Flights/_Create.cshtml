@@ -1,0 +1,80 @@
+﻿@model AirlinesReservation.Models.Flight
+<div class="modal fade flightmodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Emloyee</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("_Create", "Flights", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Flight_img, htmlAttributes: new { @class = "mb-1" })
+                        <div class="mb-3">
+                            <img src="" id="image" height="150" width="150" /> <br />
+                            <input type="file" name="image" id="file" class="inputfile" />
+                            <label for="file">Choose a file</label>
+                            @Html.ValidationMessageFor(model => model.Flight_img, "", new { @class = "text-danger" })
+                        </div>
+                        
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Origin_city, "Origin_city", htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.DropDownList("Origin_city", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Origin_city, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Destination_city, "Destination_city", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        @Html.DropDownList("Destination_city", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Destination_city, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Departure_date, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <input type="datetime-local" class="form-control" name="Departure_date">
+                        @Html.ValidationMessageFor(model => model.Departure_date, "", new { @class = "text-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">First Class</label>
+                        <input type="text" class="form-control" name="First">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Business class</label>
+                        <input type="text" class="form-control" name="Business">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Deluxe Economy Class</label>
+                        <input type="text" class="form-control" name="DeluxeEconomy">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Economy class</label>
+                        <input type="text" class="form-control" name="Economy">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="mb-3" style="margin-top:1.5em;">
+                            <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>

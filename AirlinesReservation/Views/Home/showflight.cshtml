@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "showflight";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@TempData["cl"]
+<main>
+    <br />
+    <div class="container">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <h1>@TempData["search"]</h1>
+                        <table id="example3" class=" display display-5" style="min-width: 845px;border:1px;border-radius:40px">
+                            @foreach (var fl in ViewBag.showflight)
+                            {
+                                <tr >
+                                    <td><img src="/assets/img/logo/logoimg.png" height="80" width="80" /></td>
+                                    <td>@Html.Action("namecity", new { id = @fl.Origin_city })</td>
+                                    <td><=></td>
+                                    <td>@Html.Action("namecity", new { id = @fl.Destination_city })</td>
+                                    <td>@fl.Departure_date</td>
+                                    @{
+                                        int number = 0;
+                                        string clas = "";
+
+                                        switch (@ViewBag.classseat)
+                                        {
+                                            case "Firstclass":
+                                                number = 1;
+                                                clas = "First class";
+                                                break;
+                                            case "Businessclass":
+                                                number = 5;
+                                                clas = "Business class";
+                                                break;
+                                            case "DeluxeEconomyClass":
+                                                number = 12;
+                                                clas = "Deluxe Economy class";
+                                                break;
+                                            case "Economyclass":
+                                                number = 28;
+                                                clas = "Economy class";
+                                                break;
+                                        }
+                                    }
+                                    <td>Price @clas: @Html.Action("checkprice", new { id = @fl.Flight_id, number = number })</td>
+                                    @if (Session["id"] != null)
+                                    {
+                                        <td>@Html.ActionLink("Booking", "Booking", new { id = @fl.Flight_id, Classsed = ViewBag.classseat }, new { @class = "btn btn-success btn-lg btn-block" })</td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/Home/Login" class="btn btn-success btn-lg btn-block">Booking</a></td>
+                                    }
+
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

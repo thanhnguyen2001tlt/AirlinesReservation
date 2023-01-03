@@ -1,0 +1,79 @@
+﻿@model AirlinesReservation.Models.City
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">Manage Account<a href="/Admin/Index"></a></li>
+            <li class="breadcrumb-item"><a href="/Emloyees/Index">Account</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update Account</li>
+        </ol>
+    </div>
+    <div class="row">
+        <div class="col-12 h-75">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="container-fluid" style="color:black;font-size:1.5em;">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.City_id)
+
+                            <div class="form-group" style="color:black;font-size:1.5em;">
+                                @Html.LabelFor(model => model.City_name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.City_name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.City_name, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Airport_name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.Airport_name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Airport_name, "", new { @class = "text-danger" })
+
+                            </div>
+
+                        
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                @Html.EditorFor(model => model.latitude, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.latitude, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.longitude, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.longitude, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-top:1.5em;">
+                                <div class="col-md-offset-2 col-md-12 d-flex justify-content-between">
+                                    <div>
+                                        <a href="/DB_user/Index" class="btn btn-rounded btn-outline-secondary">Back</a>
+                                    </div>
+                                    <input type="submit" value="Save" class="btn btn-rounded btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

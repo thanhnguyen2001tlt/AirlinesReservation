@@ -1,0 +1,127 @@
+﻿@model AirlinesReservation.Models.Flight
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/admin/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">Flights Details</a></li>
+        </ol>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <h4>Flight:@Html.DisplayNameFor(model => model.Flight_id)</h4>
+                    <hr />
+                    <dl class="dl-horizontal" style="font-size:1.5em; color:black">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Departure_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Departure_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Miles)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Miles)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.City.City_name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.City.City_name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.City1.City_name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.City1.City_name)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <dl class="dl-horizontal" style="font-size:1.5em; color:black">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Departure_date)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Departure_date)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Miles)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Miles)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.City.City_name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.City.City_name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.City1.City_name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.City1.City_name)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <a href="/Flights/Index" class="btn btn-rounded btn-outline-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>Seat id</th>
+                                <th>Range</th>
+                                <th>Number</th>
+                                <th>Class</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var c in ViewBag.Chair)
+                            {
+                              <tr>
+                                  <td>@c.Seat_id</td>
+                                  <td>@c.Range</td>
+                                  <td>@c.Number</td>
+                                  <td>@c.Class</td>
+                                  <td>@c.Price</td>
+                              </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

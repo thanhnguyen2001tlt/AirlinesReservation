@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_AirlinesReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Booking_ID" />
+    </Key>
+    <Property Name="Booking_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="User_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Booking_day" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Totalprice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="DB_user" Relationship="Self.FK__Booking__User_id__36B12243" FromRole="Booking" ToRole="DB_user" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK__Ticket__Booking___3B75D760" FromRole="Booking" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="City_id" />
+    </Key>
+    <Property Name="City_id" Type="Int32" Nullable="false" />
+    <Property Name="City_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Airport_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Flight__Destinat__29572725" FromRole="City" ToRole="Flight" />
+    <NavigationProperty Name="Flight1" Relationship="Self.FK__Flight__Origin_c__286302EC" FromRole="City" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Chair">
+    <Key>
+      <PropertyRef Name="Seat_id" />
+    </Key>
+    <Property Name="Seat_id" Type="Int32" Nullable="false" />
+    <Property Name="Range" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="Int32" />
+    <Property Name="Class" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK__Seat__Chair_id__31EC6D26" FromRole="Chair" ToRole="Seat" />
+  </EntityType>
+  <EntityType Name="DB_user">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Phone_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email_address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_card" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sky_miles" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Passport" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Bank_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Credit_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CVV" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Booking__User_id__36B12243" FromRole="DB_user" ToRole="Booking" />
+    <NavigationProperty Name="Round_Trip" Relationship="Self.FK__Round_Tri__User___3E52440B" FromRole="DB_user" ToRole="Round_Trip" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK__Ticket__User_id__398D8EEE" FromRole="DB_user" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="Discount_id" />
+    </Key>
+    <Property Name="Discount_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Flight_id" Type="Int32" />
+    <Property Name="Discount1" Type="Int32" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Discount__Flight__2C3393D0" FromRole="Discount" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="Emloyee">
+    <Key>
+      <PropertyRef Name="Employee_id" />
+    </Key>
+    <Property Name="Employee_id" Type="Int32" Nullable="false" />
+    <Property Name="Full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Sex" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="User_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Roles" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="Flight_id" />
+    </Key>
+    <Property Name="Flight_id" Type="Int32" Nullable="false" />
+    <Property Name="Origin_city" Type="Int32" />
+    <Property Name="Destination_city" Type="Int32" />
+    <Property Name="Departure_date" Type="DateTime" Precision="3" />
+    <Property Name="Miles" Type="Int32" />
+    <Property Name="Flight_img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK__Flight__Destinat__29572725" FromRole="Flight" ToRole="City" />
+    <NavigationProperty Name="City1" Relationship="Self.FK__Flight__Origin_c__286302EC" FromRole="Flight" ToRole="City" />
+    <NavigationProperty Name="Discount" Relationship="Self.FK__Discount__Flight__2C3393D0" FromRole="Flight" ToRole="Discount" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK__Seat__Flight_id__30F848ED" FromRole="Flight" ToRole="Seat" />
+  </EntityType>
+  <EntityType Name="Round_Trip">
+    <Key>
+      <PropertyRef Name="Roundtrip_id" />
+    </Key>
+    <Property Name="Roundtrip_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Seat_id" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="DB_user" Relationship="Self.FK__Round_Tri__User___3E52440B" FromRole="Round_Trip" ToRole="DB_user" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK__Round_Tri__Seat___3F466844" FromRole="Round_Trip" ToRole="Seat" />
+  </EntityType>
+  <EntityType Name="Seat">
+    <Key>
+      <PropertyRef Name="Seat_id" />
+    </Key>
+    <Property Name="Seat_id" Type="Int32" Nullable="false" />
+    <Property Name="Flight_id" Type="Int32" />
+    <Property Name="Chair_id" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="Chair" Relationship="Self.FK__Seat__Chair_id__31EC6D26" FromRole="Seat" ToRole="Chair" />
+    <NavigationProperty Name="Flight" Relationship="Self.FK__Seat__Flight_id__30F848ED" FromRole="Seat" ToRole="Flight" />
+    <NavigationProperty Name="Round_Trip" Relationship="Self.FK__Round_Tri__Seat___3F466844" FromRole="Seat" ToRole="Round_Trip" />
+    <NavigationProperty Name="Ticket" Relationship="Self.FK__Ticket__Seat_id__3A81B327" FromRole="Seat" ToRole="Ticket" />
+  </EntityType>
+  <EntityType Name="Ticket">
+    <Key>
+      <PropertyRef Name="Ticket_id" />
+    </Key>
+    <Property Name="Ticket_id" Type="Int32" Nullable="false" />
+    <Property Name="User_id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Seat_id" Type="Int32" />
+    <Property Name="Booking_ID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Booking" Relationship="Self.FK__Ticket__Booking___3B75D760" FromRole="Ticket" ToRole="Booking" />
+    <NavigationProperty Name="DB_user" Relationship="Self.FK__Ticket__User_id__398D8EEE" FromRole="Ticket" ToRole="DB_user" />
+    <NavigationProperty Name="Seat" Relationship="Self.FK__Ticket__Seat_id__3A81B327" FromRole="Ticket" ToRole="Seat" />
+  </EntityType>
+  <Association Name="FK__Booking__User_id__36B12243">
+    <End Role="DB_user" Type="Self.DB_user" Multiplicity="0..1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_user">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__Booking___3B75D760">
+    <End Role="Booking" Type="Self.Booking" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Booking_ID" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Booking_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__Destinat__29572725">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="City_id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="Destination_city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Flight__Origin_c__286302EC">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Flight" Type="Self.Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="City_id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="Origin_city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seat__Chair_id__31EC6D26">
+    <End Role="Chair" Type="Self.Chair" Multiplicity="0..1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chair">
+        <PropertyRef Name="Seat_id" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="Chair_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Round_Tri__User___3E52440B">
+    <End Role="DB_user" Type="Self.DB_user" Multiplicity="0..1" />
+    <End Role="Round_Trip" Type="Self.Round_Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_user">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Round_Trip">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__User_id__398D8EEE">
+    <End Role="DB_user" Type="Self.DB_user" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DB_user">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Discount__Flight__2C3393D0">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+    <End Role="Discount" Type="Self.Discount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="Flight_id" />
+      </Principal>
+      <Dependent Role="Discount">
+        <PropertyRef Name="Flight_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Seat__Flight_id__30F848ED">
+    <End Role="Flight" Type="Self.Flight" Multiplicity="0..1" />
+    <End Role="Seat" Type="Self.Seat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight">
+        <PropertyRef Name="Flight_id" />
+      </Principal>
+      <Dependent Role="Seat">
+        <PropertyRef Name="Flight_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Round_Tri__Seat___3F466844">
+    <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+    <End Role="Round_Trip" Type="Self.Round_Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seat">
+        <PropertyRef Name="Seat_id" />
+      </Principal>
+      <Dependent Role="Round_Trip">
+        <PropertyRef Name="Seat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ticket__Seat_id__3A81B327">
+    <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+    <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seat">
+        <PropertyRef Name="Seat_id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="Seat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_AirlinesReservationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Booking" EntityType="Self.Booking" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="Chair" EntityType="Self.Chair" />
+    <EntitySet Name="DB_user" EntityType="Self.DB_user" />
+    <EntitySet Name="Discount" EntityType="Self.Discount" />
+    <EntitySet Name="Emloyee" EntityType="Self.Emloyee" />
+    <EntitySet Name="Flight" EntityType="Self.Flight" />
+    <EntitySet Name="Round_Trip" EntityType="Self.Round_Trip" />
+    <EntitySet Name="Seat" EntityType="Self.Seat" />
+    <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+    <AssociationSet Name="FK__Booking__User_id__36B12243" Association="Self.FK__Booking__User_id__36B12243">
+      <End Role="DB_user" EntitySet="DB_user" />
+      <End Role="Booking" EntitySet="Booking" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__Booking___3B75D760" Association="Self.FK__Ticket__Booking___3B75D760">
+      <End Role="Booking" EntitySet="Booking" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__Destinat__29572725" Association="Self.FK__Flight__Destinat__29572725">
+      <End Role="City" EntitySet="City" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Flight__Origin_c__286302EC" Association="Self.FK__Flight__Origin_c__286302EC">
+      <End Role="City" EntitySet="City" />
+      <End Role="Flight" EntitySet="Flight" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seat__Chair_id__31EC6D26" Association="Self.FK__Seat__Chair_id__31EC6D26">
+      <End Role="Chair" EntitySet="Chair" />
+      <End Role="Seat" EntitySet="Seat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Round_Tri__User___3E52440B" Association="Self.FK__Round_Tri__User___3E52440B">
+      <End Role="DB_user" EntitySet="DB_user" />
+      <End Role="Round_Trip" EntitySet="Round_Trip" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__User_id__398D8EEE" Association="Self.FK__Ticket__User_id__398D8EEE">
+      <End Role="DB_user" EntitySet="DB_user" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Discount__Flight__2C3393D0" Association="Self.FK__Discount__Flight__2C3393D0">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Discount" EntitySet="Discount" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Seat__Flight_id__30F848ED" Association="Self.FK__Seat__Flight_id__30F848ED">
+      <End Role="Flight" EntitySet="Flight" />
+      <End Role="Seat" EntitySet="Seat" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Round_Tri__Seat___3F466844" Association="Self.FK__Round_Tri__Seat___3F466844">
+      <End Role="Seat" EntitySet="Seat" />
+      <End Role="Round_Trip" EntitySet="Round_Trip" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ticket__Seat_id__3A81B327" Association="Self.FK__Ticket__Seat_id__3A81B327">
+      <End Role="Seat" EntitySet="Seat" />
+      <End Role="Ticket" EntitySet="Ticket" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

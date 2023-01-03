@@ -1,0 +1,97 @@
+﻿@model IEnumerable<AirlinesReservation.Models.Seat>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+@Html.Raw(TempData["mes"])
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/Flights/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">View Seat</a></li>
+        </ol>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Flight.Flight_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chair.Seat_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chair.Range)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chair.Number)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chair.Class)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Chair.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Flight.Flight_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chair.Seat_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chair.Range)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chair.Number)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chair.Class)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Chair.Price)
+                                    </td>
+                                    @{ String Status = "";
+                                        switch (@item.Status)
+                                        {
+                                            case 0:
+                                                Status = "Emty";
+                                                break;
+                                            case 1:
+                                                Status = "Full";
+                                                break;
+                                        }
+                                    }
+                                    <td>
+                                        @Status
+                                    </td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

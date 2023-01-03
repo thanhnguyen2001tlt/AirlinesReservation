@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6d2060d7b484cf1979a3653f6d297aa" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Booking" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.City" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Chair" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.DB_user" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Discount" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Emloyee" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Flight" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Round_Trip" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Seat" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_AirlinesReservationModel.Ticket" Width="1.5" PointX="10.5" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Booking__User_id__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Ticket__Booking___3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Flight__Destinat__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Flight__Origin_c__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Seat__Chair_id__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Round_Tri__User___3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Ticket__User_id__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Discount__Flight__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Seat__Flight_id__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Round_Tri__Seat___3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_AirlinesReservationModel.FK__Ticket__Seat_id__3A81B327" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

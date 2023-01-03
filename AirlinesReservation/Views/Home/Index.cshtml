@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <!-- slider Area Start-->
+    <div class="slider-area ">
+        <!-- Mobile Menu -->
+        <div class="slider-active">
+            <div class="single-slider hero-overly  slider-height d-flex align-items-center" style="background: url(/assets/img/hero/h1_hero.jpg) ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-9 col-md-9">
+                            <div class="hero__caption">
+                                <h1>Find your Next Flight </h1>
+                                <p>Where do you want to go ? </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search Box -->
+                    <div class="row">
+                        <div class="col-md-12" style="color:white">
+                            <form method="post" action="/Home/showflight">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Flyning from</span>
+                                            <select class="form-control" name="cityfrom">
+                                                @foreach (var c in ViewBag.city)
+                                                {
+                                                    <option value="@c.City_id">@c.City_name (@c.Airport_name)</option>
+                                                }
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <span class="form-label">Flyning to</span>
+                                           <select class="form-control" name="cityto">
+                                                @foreach (var c in ViewBag.city)
+                                                {
+                                                    <option value="@c.City_id">@c.City_name (@c.Airport_name)</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <span class="form-label">Departing</span>
+                                            <input class="form-control" name="datefrom" type="date" required>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <span class="form-label">Adults</span>
+                                            <input class="form-control" name="adults" type="number" min="1" value="1" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <span class="form-label">Travel class</span>
+                                            <select class="form-control" name="classseat">
+                                                <option value="Economyclass">Economy class</option>
+                                                <option value="DeluxeEconomyClass">Deluxe Economy Class</option>
+                                                <option value="Businessclass">Business class</option>
+                                                <option value="Firstclass">First class</option>
+                                            </select>
+                                            <span class="select-arrow"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="search-form mb-30">
+                                            <div class="btn-lg btn-block">
+                                                <input type="submit" class="btn btn-success btn-lg btn-block" value="Search">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider Area End-->
+    <!-- Our Services Start -->
+    <div class="our-services servic-padding">
+        <div class="container">
+            <div class="row d-flex justify-contnet-center">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-tour"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>8000+ Our Local<br>Guides</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-pay"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>100% Trusted Tour<br>Agency</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-experience"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>28+ Years of Travel<br>Experience</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                    <div class="single-services text-center mb-30">
+                        <div class="services-ion">
+                            <span class="flaticon-good"></span>
+                        </div>
+                        <div class="services-cap">
+                            <h5>98% Our Travelers<br>are Happy</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Services End -->
+    <!-- Favourite Places Start -->
+    <div class="favourite-place place-padding">
+        <div class="container">
+            <!-- Section Tittle -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-tittle text-center">
+                        <span>FEATURED Outstanding Flights</span>
+                        <h2>Discount Flights</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var f in ViewBag.Discount)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="single-place mb-30">
+                            <div class="place-img">
+                                @{ 
+                                    var img = "/img/" + Html.Action("imgflight", new { id = f.Flight_id });
+                                }
+                                <img src="@img" alt="">
+                            </div>
+                            <div class="place-cap">
+                                <div class="place-cap-top">
+                                    <h3><a href="#">@Html.Action("flightfrom", new { id = f.Flight_id }) => @Html.Action("flightto", new { id = f.Flight_id }) </a> </h3><span style="color:red">-@f.Discount1 %</span>
+                                    
+                                    <div class="row">
+                                        <p class="dolor col-6">Fist Class: <br />$@Html.Action("checkpricediscoint", new { id = f.Flight_id, number = 1, dicount = f.Discount1 }) <span style="text-decoration: line-through;">$@Html.Action("pricecheck", new { id = f.Flight_id, number = 1 })</span></p>
+                                        <p class="dolor col-6">Business Class: $@Html.Action("checkpricediscoint", new { id = f.Flight_id, number = 5, dicount = f.Discount1 }) <span style="text-decoration: line-through;">$@Html.Action("pricecheck", new { id = f.Flight_id, number = 1 })</span></p>
+                                    </div>
+                                    <div class="row">
+                                        <p class="dolor col-6">Deluxe Economy: <br /> $@Html.Action("checkpricediscoint", new { id = f.Flight_id, number = 12, dicount = f.Discount1 }) <span style="text-decoration: line-through;">$@Html.Action("pricecheck", new { id = f.Flight_id, number = 1 })</span></p>
+                                        <p class="dolor col-6">Economy class: <br />$@Html.Action("checkpricediscoint", new { id = f.Flight_id, number = 28, dicount = f.Discount1 })<span style="text-decoration: line-through;">$@Html.Action("pricecheck", new { id = f.Flight_id, number = 1 })</span></p>
+                                    </div>
+                                </div>
+                                <div class="place-cap-bottom">
+                                    <ul>
+                                        <li><i class="far fa-clock"></i>Departure: @Html.Action("flightdate", new { id = f.Flight_id })</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</main>

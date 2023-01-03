@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="admin, dashboard">
+    <meta name="author" content="DexignZone">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dompet : Payment Admin Template">
+    <meta property="og:title" content="Dompet : Payment Admin Template">
+    <meta property="og:description" content="Dompet : Payment Admin Template">
+    <meta property="og:image" content="https://dompet.dexignlab.com/xhtml/social-image.png">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/logo/logoimg.png">
+    <!-- PAGE TITLE HERE -->
+    <title>@ViewBag.Title</title>
+    <!-- FAVICONS ICON -->
+    <link rel="shortcut icon" type="image/png" href="~/admin/images/favicon.png">
+    <link href="~/admin/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="~/admin/vendor/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/admin/vendor/nouislider/nouislider.min.css">
+    <!-- Style css -->
+    <link href="~/admin/css/StyleSheet.css" rel="stylesheet">
+     <link href="~/Content/imagecss.css" rel="stylesheet">
+</head>
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="waviy">
+            <span style="--i:1">L</span>
+            <span style="--i:2">o</span>
+            <span style="--i:3">a</span>
+            <span style="--i:4">d</span>
+            <span style="--i:5">i</span>
+            <span style="--i:6">n</span>
+            <span style="--i:7">g</span>
+            <span style="--i:8">.</span>
+            <span style="--i:9">.</span>
+            <span style="--i:10">.</span>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <div class="nav-header">
+            <a href="~/Admin/Index" class="brand-logo">
+                <img class="logo-abbr" src="~/assets/img/logo/logoimg.png" width="80" height="80" viewbox="0 0 53 53" ; />
+                <img class="brand-title" src="~/assets/img/logo/lgtext.png" width="150" height="25" />
+            </a>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <!--**********************************
+            Chat box End
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="dashboard_bar">
+
+                            </div>
+                        </div>
+                        <ul class="navbar-nav header-right">
+
+                            <li class="nav-item">
+                                <a href="javascript:void(0);" class="btn btn-primary d-sm-inline-block d-none">Generate Report<i class="las la-signal ms-3 scale5"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="dlabnav">
+            <div class="dlabnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="dropdown header-profile">
+                        <a class="nav-link" href="#">
+                            @{
+                                var imge = "/img/" + Session["image"];
+                            }
+                            <img src="@imge" width="20" alt="">
+                            <div class="header-info ms-3">
+                                <span class="font-w600 ">Hi,<b>@Session["name"]</b></span>
+                                <small class="text-end font-w400">@Session["email"]</small>
+                            </div>
+                        </a>
+                        @Html.ActionLink("Logout", "Logout", new { id = 1 }, new { @class = "btn btn-primary btn-block " })
+                    </li>
+
+                    @if (Session["role"].ToString() == "1")
+                    {
+                        <li>
+                            <a class=" ai-icon" href="~/Emloyees/Index" aria-expanded="false">
+                                <i class="flaticon-034-filter"></i>
+                                <span class="nav-text">Manage Employee</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a class="ai-icon" href="~/Admin/Index" aria-expanded="false">
+                                <i class="flaticon-381-home"></i>
+                                <span class="nav-text">View Order</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class=" ai-icon" href="~/DB_user/Index" aria-expanded="false">
+                                <i class="flaticon-381-user"></i>
+                                <span class="nav-text">Manage Account</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/Discounts/Index" aria-expanded="false">
+
+                                <i class="flaticon-027-dot"></i>
+                                <span class="nav-text">Manage Discount</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                <i class="flaticon-025-dashboard"></i>
+                                <span class="nav-text">Flight Infomation</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li>
+                                    <a class="ai-icon" href="~/Flights/Index" aria-expanded="false">
+                                        Manage Flight
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="ai-icon" href="~/Admin/Seat" aria-expanded="false">
+                                        View Seat
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="~/City/Index" aria-expanded="false">
+                                        Manage City
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                    }
+
+
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="content-body">
+            @{
+                Html.RenderAction("_Create", "Flights");
+                Html.RenderAction("_Create", "Discounts");
+                Html.RenderAction("_Create", "Emloyees");
+                Html.RenderAction("_Create", "City"); ;
+            }
+            @RenderBody()
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="~/admin/vendor/global/global.min.js"></script>
+    <script src="~/admin/vendor/chart.js/Chart.bundle.min.js"></script>
+    <script src="~/admin/vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+
+    <!-- Apex Chart -->
+    <script src="~/admin/vendor/apexchart/apexchart.js"></script>
+    <script src="~/admin/vendor/nouislider/nouislider.min.js"></script>
+    <script src="~/admin/vendor/wnumb/wNumb.js"></script>
+
+    <!-- Datatable -->
+    <script src="~/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/admin/js/plugins-init/datatables.init.js"></script>
+
+    <!-- Dashboard 1 -->
+    <script src="~/admin/js/dashboard/dashboard-1.js"></script>
+
+    <script src="~/admin/js/custom.min.js"></script>
+    <script src="~/admin/js/dlabnav-init.js"></script>
+    <script src="~/admin/js/demo.js"></script>
+    <script src="~/admin/js/styleSwitcher.js"></script>
+    <!-- Daterangepicker -->
+    <!-- momment js is must -->
+    <script src="~/admin/vendor/moment/moment.min.js"></script>
+    <script src="~/admin/vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- clockpicker -->
+    <script src="~/admin/vendor/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+    <!-- asColorPicker -->
+    <script src="~/admin/vendor/jquery-asColor/jquery-asColor.min.js"></script>
+    <script src="~/admin/vendor/jquery-asGradient/jquery-asGradient.min.js"></script>
+    <script src="~/admin/vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js"></script>
+    <!-- Material color picker -->
+    <script src="~/admin/vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- pickdate -->
+    <script src="~/admin/vendor/pickadate/picker.js"></script>
+    <script src="~/admin/vendor/pickadate/picker.time.js"></script>
+    <script src="~/admin/vendor/pickadate/picker.date.js"></script>
+    <script src="~/Scripts/image.js"></script>
+    <script src="~/Scripts/getupimg.js"></script>
+
+
+    <!-- Daterangepicker -->
+    <script src="~/admin/js/plugins-init/bs-daterange-picker-init.js"></script>
+    <!-- Clockpicker init -->
+    <script src="~/admin/js/plugins-init/clock-picker-init.js"></script>
+    <!-- asColorPicker init -->
+    <script src="~/admin/js/plugins-init/jquery-asColorPicker.init.js"></script>
+    <!-- Material color picker init -->
+    <script src="~/admin/js/plugins-init/material-date-picker-init.js"></script>
+    <!-- Pickdate -->
+    <script src="~/admin/js/plugins-init/pickadate-init.js"></script>
+</body>
+</html>

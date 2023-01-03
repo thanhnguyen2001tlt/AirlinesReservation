@@ -1,0 +1,93 @@
+﻿
+@model  AirlinesReservation.Models.DB_user
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form">
+                        @TempData["AlertMessage"]
+                        <h4 class="text-center mb-4">
+                            <img class="logo-abbr" src="~/assets/img/logo/logoimg.png" width="80" height="80" viewbox="0 0 53 53" ; />
+                            <img class="brand-title" src="~/assets/img/logo/lgtext.png" width="150" height="25" />
+                        </h4>
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken();
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="mb-3">
+                            
+                                <img src="" id="image" height="150" width="150" /> <br />
+                                <input type="file" name="image" id="file" class="inputfile" />
+                                <label for="file">Choose a file</label>
+                                @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.First_name, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.First_name, htmlAttributes: new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Last_name, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Last_name, htmlAttributes: new { @class = "form-control", @required = "required" })
+                            </div>
+
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Address, htmlAttributes: new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Phone_number, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Phone_number, new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Email_address, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Email_address, htmlAttributes: new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "mb-1" })
+                                @Html.DropDownListFor(model => model.Sex, new List<SelectListItem> { new SelectListItem { Text = "Nam", Value = "Nam" }, new SelectListItem { Text = "Nữ", Value = "Nu" } }, new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "mb-1" })
+                                @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control", @required = "required" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Age, htmlAttributes: new { @class = "form-control", @type = "number", @min = 7, @max = 100, @required = "required" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Passport, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Passport, htmlAttributes: new { @class = "form-control", @pattern = "[A-Za-z]{1}[0-9]{6,9}", @placeholder = "1 letter [a-z,A-Z] and at least 6 numbers [0-9]" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Bank_Name, htmlAttributes: new { @class = "mb-1" })
+                                @Html.DropDownList("Bank_Name", @ViewBag.Banks as List<SelectListItem>, "Select Bank_Name", new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Credit_card, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Credit_card, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.Credit_Name, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.Credit_Name, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                @Html.LabelFor(model => model.CVV, htmlAttributes: new { @class = "mb-1" })
+                                @Html.TextBoxFor(model => model.CVV, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+</main>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AirlinesReservation.Models.DB_user>
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/admin/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">Manage Account</a></li>
+        </ol>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Age</th>
+                                <th>Sex</th>
+                                <th>Credit_card</th>
+                                <th>Sky Miles</th>
+                                <th>Passport</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var acc in ViewBag.Account)
+                            {
+                                <tr>
+                                    @{
+                                        string linkimg = "/img/default.jpg";
+                                        if (@acc.Img != "")
+                                        {
+                                            linkimg = "/img/" + @acc.Img;
+                                        }
+                                    }
+                                    <td><img class="rounded-circle" width="70" height="70" src="@linkimg" alt=""></td>
+                                    <td>@acc.First_name</td>
+                                    <td>@acc.Last_name</td>
+                                    <td>@acc.Address</td>
+                                    <td><strong>@acc.Phone_number</strong></td>
+                                    <td><strong>@acc.Email_address</strong></td>
+                                    <td>@acc.Age</td>
+                                    <td>@acc.Sex</td>
+                                    <td>@acc.Credit_card</td>
+                                    <td>@acc.Sky_miles</td>
+                                    <td>@acc.Passport</td>
+                                    @{ String Status = "";
+                                        switch (@acc.Status)
+                                        {
+                                            case 0:
+                                                Status = "Enable";
+                                                break;
+                                            case 1:
+                                                Status = "Block";
+                                                break;
+                                        }
+                                    }
+                                    <td>@Status</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            @Html.ActionLink("Edit", "Edit", new { id = acc.User_id }, new { @class = "btn btn-primary shadow btn-xs sharp me-1 fas fa-pencil-alt" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

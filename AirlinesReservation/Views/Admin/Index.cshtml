@@ -1,0 +1,81 @@
+﻿@model IEnumerable<AirlinesReservation.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+@Html.Raw(TempData["mes"])
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/Flights/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">View Booking</a></li>
+        </ol>
+    </div>
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Booking.Booking_ID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Booking.Booking_day)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Booking.User_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Seat.Seat_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Seat.Flight_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Booking.Booking_ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Booking.Booking_day)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Booking.User_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Seat.Seat_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Seat.Flight_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

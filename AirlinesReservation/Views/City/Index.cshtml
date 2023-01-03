@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AirlinesReservation.Models.City>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+@Html.Raw(TempData["mes"])
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/City/">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">Manage Emloyee</a></li>
+        </ol>
+    </div>
+    <div class="card-header d-flex justify-content-between">
+        <div> <h4 class="card-title">Manage Emloyee</h4></div>
+        <button type="button" class="btn btn-rounded btn-success pull-right" data-bs-toggle="modal" data-bs-target=".citymodal">
+            <span class="btn-icon-start text-info">
+                <i class="fa fa-plus color-info"></i>
+            </span>Add
+        </button>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example3" class="display" style="min-width: 845px">
+                        <thead>
+                            <tr>
+                                <th>City ID</th>
+                                <th>City name</th>
+                                <th>Airport name</th>
+                                <th>Distance</th>
+                                <th>latitude</th>
+                                <th>longitude</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var c in ViewBag.City)
+                            {
+                                <tr>
+                                    <td>@c.City_id</td>
+                                    <td>@c.City_name</td>
+                                    <td>@c.Airport_name</td>
+                                    <td>@c.latitude</td>
+                                    <td>@c.longitude</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = c.City_id }, new { @class = "btn btn-primary shadow btn-xs sharp me-1 fas fa-pencil-alt" }) 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

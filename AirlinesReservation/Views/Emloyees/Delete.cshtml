@@ -1,0 +1,84 @@
+﻿@model AirlinesReservation.Models.Emloyee
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+
+
+}
+<div class="container-fluid">
+    <div class="row page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="~/admin/index">Admin</a></li>
+            <li class="breadcrumb-item"><a href="">Manage Account</a></li>
+        </ol>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body text-center">
+
+                @{ string linkimg = "/img/default.jpg";
+                    if (ViewBag.Emloyees.Img != "")
+                    {
+                        linkimg = "/img/" + ViewBag.Emloyees.Img;
+                    }
+                    string name = ViewBag.Emloyees.Full_name;
+                    string address = ViewBag.Emloyees.Address;
+                    int Age = ViewBag.Emloyees.Age;
+                    string Email = ViewBag.Emloyees.Email;
+                    int sex = ViewBag.Emloyees.Sex;
+                    string Sexemloyee = "";
+                    switch (sex)
+                    {
+                        case 0:
+                            Sexemloyee = "Nam";
+                            break;
+                        case 1:
+                            Sexemloyee = "Nữ";
+                            break;
+                    }
+                    string Addres = ViewBag.Emloyees.Address;
+                }
+                <img src="@linkimg" alt="avatar" class="rounded-circle img-fluid" style="width: 250px;">
+                <h1 class="" style="font-family:'Times New Roman'">@name</h1>
+                <div class="container" style="text-align:left">
+                    <h2 class="">Address: @address</h2>
+                    <h2 class="">Email: @Email</h2>
+                    <h2 class="">Age: @Age</h2>
+                    <h2 class="">Sex: @Sexemloyee</h2>
+                    <div class="table-responsive">
+                        <h1>Are you sure you want to delete this?</h1>
+                        <div>
+                            <h1>Emloyee</h1>
+                            <hr />
+                            <dl class="dl-horizontal" style="display:none;">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Full_name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Full_name)
+                                </dd>
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <div class="col-md-offset-2 col-md-12 d-flex justify-content-between">
+                                        <div>
+                                            <a href="/Emloyees/Index" class="btn btn-rounded btn-outline-secondary">Back</a>
+                                        </div>
+                                        <input type="submit" value="Delete" class="btn btn-rounded btn-success" />
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

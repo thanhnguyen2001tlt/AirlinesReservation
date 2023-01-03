@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "showtiket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+@{
+    ViewBag.Title = "mybooking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-white mb-5">
+                <div class="card-heading clearfix border-bottom mb-4">
+                    <h4 class="card-title">Booking Requests</h4>
+                </div>
+                <div>
+                    <form method="post" action="/Home/showtiket">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input class="form-control" name="tiketid" type="text" pattern="[0-9]*" placeholder="enter ticket id number" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="submit" class="btn btn-success btn-lg btn-block" value="Search">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        @if (Request["tiketid"] !=null) { 
+
+                            <li class="position-relative booking">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Date:</span>
+                                            <span class="bg-light-blue">@ViewBag.Flight.Departure_date</span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Flight:</span>
+                                            <span class="bg-light-blue">@Html.Action("namecity", new { id = @ViewBag.Flight.Origin_city })=>@Html.Action("namecity", new { id = @ViewBag.Flight.Origin_city })</span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Row:</span>
+                                            <span class="bg-light-blue">@ViewBag.chart.Range</span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Seat:</span>
+                                            <span class="bg-light-blue">@ViewBag.chart.Number</span>
+                                        </div>
+                                        @{
+                                            var kt = @ViewBag.seat.Status;
+                                            string sta = "";
+                                            if (kt == 1)
+                                                sta = "Buy";
+                                            if (kt == 2)
+                                                sta = "Block";
+                                           }
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Status:</span>
+                                            <span class="bg-light-blue">@sta </span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Price:</span>
+                                            <span class="bg-light-blue">@ViewBag.ticket.Price</span>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

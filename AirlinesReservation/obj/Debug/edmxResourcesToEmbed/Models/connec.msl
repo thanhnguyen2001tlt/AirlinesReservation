@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_AirlinesReservationModelStoreContainer" CdmEntityContainer="DB_AirlinesReservationEntities">
+    <EntitySetMapping Name="Booking">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Booking">
+        <MappingFragment StoreEntitySet="Booking">
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Booking_day" ColumnName="Booking_day" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Totalprice" ColumnName="Totalprice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="City_id" ColumnName="City_id" />
+          <ScalarProperty Name="City_name" ColumnName="City_name" />
+          <ScalarProperty Name="Airport_name" ColumnName="Airport_name" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Chair">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Chair">
+        <MappingFragment StoreEntitySet="Chair">
+          <ScalarProperty Name="Seat_id" ColumnName="Seat_id" />
+          <ScalarProperty Name="Range" ColumnName="Range" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DB_user">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.DB_user">
+        <MappingFragment StoreEntitySet="DB_user">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="First_name" ColumnName="First_name" />
+          <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="Email_address" ColumnName="Email_address" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Credit_card" ColumnName="Credit_card" />
+          <ScalarProperty Name="Sky_miles" ColumnName="Sky_miles" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Bank_Name" ColumnName="Bank_Name" />
+          <ScalarProperty Name="Credit_Name" ColumnName="Credit_Name" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discount">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Discount">
+        <MappingFragment StoreEntitySet="Discount">
+          <ScalarProperty Name="Discount_id" ColumnName="Discount_id" />
+          <ScalarProperty Name="Flight_id" ColumnName="Flight_id" />
+          <ScalarProperty Name="Discount1" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emloyee">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Emloyee">
+        <MappingFragment StoreEntitySet="Emloyee">
+          <ScalarProperty Name="Employee_id" ColumnName="Employee_id" />
+          <ScalarProperty Name="Full_name" ColumnName="Full_name" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="User_name" ColumnName="User_name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Roles" ColumnName="Roles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Flight">
+        <MappingFragment StoreEntitySet="Flight">
+          <ScalarProperty Name="Flight_id" ColumnName="Flight_id" />
+          <ScalarProperty Name="Origin_city" ColumnName="Origin_city" />
+          <ScalarProperty Name="Destination_city" ColumnName="Destination_city" />
+          <ScalarProperty Name="Departure_date" ColumnName="Departure_date" />
+          <ScalarProperty Name="Miles" ColumnName="Miles" />
+          <ScalarProperty Name="Flight_img" ColumnName="Flight_img" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Round_Trip">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Round_Trip">
+        <MappingFragment StoreEntitySet="Round_Trip">
+          <ScalarProperty Name="Roundtrip_id" ColumnName="Roundtrip_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Seat_id" ColumnName="Seat_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Seat">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Seat">
+        <MappingFragment StoreEntitySet="Seat">
+          <ScalarProperty Name="Seat_id" ColumnName="Seat_id" />
+          <ScalarProperty Name="Flight_id" ColumnName="Flight_id" />
+          <ScalarProperty Name="Chair_id" ColumnName="Chair_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ticket">
+      <EntityTypeMapping TypeName="DB_AirlinesReservationModel.Ticket">
+        <MappingFragment StoreEntitySet="Ticket">
+          <ScalarProperty Name="Ticket_id" ColumnName="Ticket_id" />
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
+          <ScalarProperty Name="Seat_id" ColumnName="Seat_id" />
+          <ScalarProperty Name="Booking_ID" ColumnName="Booking_ID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
